@@ -15,6 +15,7 @@ class ListsController < ApplicationController
   end
 
   def index
+    puts "作成したキー#{ENV['SECRET_KEY']}"
     @lists = List.all
   end
 
@@ -37,9 +38,10 @@ class ListsController < ApplicationController
     list.destroy
     redirect_to '/lists'
   end
-  end
+  
 
   private
    def list_params
      params.require(:list).permit(:title, :body, :image)
    end
+  end
